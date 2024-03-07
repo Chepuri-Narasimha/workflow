@@ -1,7 +1,7 @@
 name: nodejscodetest 
 on: push
 jobs:
-  codeclone:
+  test:
     runs-on: ubuntu-latest
     steps:
         - name: get code
@@ -14,4 +14,17 @@ jobs:
           run: npm ci
         - name: testing code 
           run: npm test
-          
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+        - name: get code
+          uses: actions/checkout@v3
+        - name: Node js installation 
+          uses: actions/setup-node@v3
+          with:
+            node-version: 18
+        - name: install dependencies
+          run: npm ci
+        - name: deploy 
+          run: echo "deploying...." 
