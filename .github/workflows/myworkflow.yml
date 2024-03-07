@@ -5,6 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: printing values
-        run: "echo there"
+        run:  echo "hi there"
       - name: printing bye
-        run: "echo bye"
+        run:  echo "bye"
+      - name: multicommands
+        run: |
+            echo " testing multicommands"
+            echo " tested successfully bye"
